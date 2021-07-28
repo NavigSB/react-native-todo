@@ -1,21 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, FlatList } from 'react-native';
+import ToDoInput from './src/ToDoBody/ToDoInput';
+import ToDoItem from './src/ToDoBody/ToDoItem';
 
 export default function App() {
+  const [toDos, setToDos] = useState([]);
+
+  function addToDoHandler(toDoTitle) {
+    setToDos(currentToDos => [
+      ...currentToDos, 
+      {id: Math.random().toString(), value: toDoTitle}
+    ]);
+  }
+
+  function removeToDoHandler(toDoId) {
+    setToDos(currentToDos => {
+      return currentToDos.filter((toDo) => toDo.id !== toDoId);
+    });
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style = {styles.screen}>
+      <FlatList 
+        keyExtractor = {(item, index) => item.id}
+        data = {toDos} 
+        renderItem = {itemData => 
+          <ToDoItem 
+            id = {itemData.item.id} 
+            onDelete = {removeToDoHandler} 
+            title = {itemData.item.value}  
+          />
+        }
+      />
+      <ToDoInput onAddToDo = {addToDoHandler}/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  screen: {
+    padding: 50
   },
 });
