@@ -39,8 +39,6 @@ export default (
     children = props.children;
   }
 
-  console.log(props.children);
-
   return (
     <NavigationContainer>
       <Navigator {...navigatorProps}>
@@ -49,7 +47,9 @@ export default (
           newProps.key = child.props.title || child.type.name;
           newProps.name = child.props.name || child.type.name;
           newProps.component = child.type;
-          return <Screen {...newProps} />;
+          const newOptions = { ...(child.props.options || {}) };
+          newOptions.title = child.props.title;
+          return <Screen options={newOptions} {...newProps} />;
         })}
       </Navigator>
     </NavigationContainer>
