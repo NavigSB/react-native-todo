@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
+
+const [dot, setDot] = useState([]);
 
 const TodoDot = (props) => {
   return (
@@ -13,15 +15,6 @@ const TodoDot = (props) => {
 };
 
 // how do I make it so that it changes between the filled and the empty one?
-
-const TodoDot = (props) => {
-  <TouchableOpacity style={styles.container}>
-    <Image
-      style={styles.image}
-      source={require("./../../assets/images/TodoDotFilled.png")}
-    />
-  </TouchableOpacity>;
-};
 
 const styles = StyleSheet.create({
   container: {

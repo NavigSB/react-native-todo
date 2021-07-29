@@ -24,6 +24,8 @@ export default ({ id, title, onDelete, style }) => {
 };
 
 // bellow is for the text style when it is crossed out, do need to figure out state
+//not really sure on how to implement this part of the program so i am just going to
+//leave it as it is
 
 // <Text style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>
 // Solid line-through
