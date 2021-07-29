@@ -12,6 +12,17 @@ const TodoDot = (props) => {
   );
 };
 
+// how do I make it so that it changes between the filled and the empty one?
+
+const TodoDot = (props) => {
+  <TouchableOpacity style={styles.container}>
+    <Image
+      style={styles.image}
+      source={require("./../../assets/images/TodoDotFilled.png")}
+    />
+  </TouchableOpacity>;
+};
+
 const styles = StyleSheet.create({
   container: {
     height: "40%",
